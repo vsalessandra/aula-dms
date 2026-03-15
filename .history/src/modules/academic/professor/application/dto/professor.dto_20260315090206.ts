@@ -1,0 +1,20 @@
+import type { Professor } from "@academic/professor/domain/models/professor.entity";
+
+export class ProfessorDto {
+  private constructor(
+    public name: string,
+    public email: string,
+    public document: string,
+    public registration: string,
+  ) {}
+
+  public static fromProfessor(professor: Professor | null): ProfessorDto | null {
+    if (!professor) return null;
+    return new ProfessorDto(
+      professor.name,
+      professor.email,
+      professor.document,
+      professor.registration,
+    );
+  }
+}
